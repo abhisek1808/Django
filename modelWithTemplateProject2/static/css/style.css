@@ -1,0 +1,31 @@
+/* body{
+    background-image:url("/static/images/img1.gif");
+    background-size: cover;
+    background-repeat: no-repeat;
+} */
+table{
+background-color: lavender;
+border-color: blue;
+margin-left: 590px;
+text-align: center;
+outline: 2px dashed lightseagreen;
+}
+#t2{
+    margin-left: 610px;
+}
+h1{
+    text-align: center; 
+}
+h2{
+    background-color: white;
+    color: red;
+}
+td:hover{
+    background-color: black;
+    color: white;
+}
+h1:hover{
+    color: yellow;
+    background-image: linear-gradient(42deg,blue,red);
+    
+}

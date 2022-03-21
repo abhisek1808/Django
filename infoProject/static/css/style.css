@@ -1,0 +1,32 @@
+body{
+    background-image: url('/static/images/bg.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    text-align: center;
+}
+h1{
+    text-decoration: 3px  underline dashed gold;
+}
+.card-body{
+    box-shadow:3px 2px red;
+    background-color: black;
+    color:gold;
+    
+}
+.card-title{
+    text-align: center;
+    text-decoration:2px underline dashed ;
+}
+#p1{
+    background-color: black;
+    color: greenyellow;
+    font-size: 30px;
+    text-align: center;
+    margin-top:180px;
+}
+.dropdown-item:hover{
+    background: black;
+    color: gold;
+
+}
+

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+{%load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Model_with_Template_Project2</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <h1><u>(: Cars Collection :)</u></h1>
+    {% if car %}
+    <table border="3">
+        <tr>
+            <th>Car_Brand</th>
+            <th>Car_Model</th>
+            <th>Car_Price</th>
+            <th>Car_image</th>
+        </tr>
+        {% for i in car%}
+        <tr>
+            <td>{{i.Car_Brand}}</td>
+            <td>{{i.Car_Model}}</td>
+            <td>{{i.Car_Price}}</td>
+            <td>{{i.Car_image}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+    <h2>Record not Found !!!:)</h2>
+    {% endif %}
+
+    <br>
+    <br>
+
+    <h1><u>(: Bike Collection :)</u></h1>
+    {% if bike %}
+    <table border="3" id="t2">
+        <tr>
+            <th>Bike_Brand</th>
+            <th>Bike_Model</th>
+            <th>Bike_Price</th>
+        </tr>
+        {% for i in bike%}
+        <tr>
+            <td>{{i.Bike_Brand}}</td>
+            <td>{{i.Bike_Model}}</td>
+            <td>{{i.Bike_Price}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+    <h2>Record not Found !!!:)</h2>
+    {% endif %}
+</body>
+</html>
