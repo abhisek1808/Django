@@ -1,0 +1,21 @@
+body{
+    background-color: black;
+}
+#box{
+    background-color: black;
+    color: gold;
+    text-align: center;
+    padding: 20px;
+    width: 500px;
+    font-family: cursive;
+    border-radius: 20px;
+    box-shadow: 0 0 15px gold;
+    margin: auto;
+
+}
+h1{
+    color:white;
+    font-family: cursive;
+    text-align: center;
+    text-shadow: 0 0 15px red;
+}

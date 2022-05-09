@@ -1,0 +1,418 @@
+Django:
+
+static website - html css bt
+dynamic website - 
+
+front end & back end 
+
+
+
+
+Django Introduction :
+---------------------
+Django is a Web framework 
+It is free
+Djnago writen in Python 
+It follows MVT(Model - View - Template)
+
+Django is a Free, open source MVT based PYTHON Framework 
+
+DSF ---> 
+
+
+2003 ---> 
+
+
+
+FEATURES OF DJANGO :
+-------------------
+1. Super Fast 
+
+2. Very good Security 
+
+3. Scalability 
+    100---> 2021 
+    1000000----->2023
+
+4.Fully loaded.
+
+5. Versatile 
+
+
+offfical web site : dajnagoprojects.com
+
+
+
+
+First Django Application Deveolopemnet :
+----------------------------------------
+req:
+python 
+pip install django 
+py -m djnago --version 
+
+ide : pyc , vscode 
+
+vs code --> 
+
+
+How to craete Djnago Projects :
+-------------------------------
+
+https://docs.djangoproject.com/en/3.2/intro/tutorial01/
+
+
+django-admin startproject ProjectName
+
+How to Run MyFirstProject
+--------------------------
+
+py manage.py runserver
+
+
+How to create first djnago application :
+----------------------------------------
+python manage.py startapp MyFirstApp
+
+
+
+Steps required for my Djnago Application :
+------------------------------------------
+
+step -1 :
+
+you have to add our application in settings.py , so that djnago can known about our application 
+
+
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'MyFirstApp'    # add this one
+]
+
+step -2 :
+---------
+
+Now we will craete  View 
+where we will create a view ----->views.py
+
+view we can create in 2 ways 
+--------------------------------
+1. Funcational Based views 
+2. Class Baesd Views
+
+we will create funcational based view 
+----------------------------------------
+first go to views.py 
+then 
+import module  this module 
+
+from django.http import HttpResponse 
+
+
+# Create your views here.
+
+def displayData(request):
+    resp='<h3>Hello Djnago... We created our first djnago application</h3>'
+    return HttpResponse(resp)
+
+
+step -3  :
+---------
+Define url-pattern for our view :
+---------------------------------
+inside urls.py we can define url-pattern
+
+
+
+from django.contrib import admin
+from django.urls import path
+from MyFirstApp import views    # imports manually 
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('welcome/', views.displayData),    # url-pattern
+]
+
+
+strp -4 :
+--------
+start server  / run our first application 
+
+py manage.py runserver 
+
+then open this http://127.0.0.1:8000/wish   broswer 
+
+
+
+create multiple views function :
+-------------------------------
+
+views.py
+----------
+
+from django.shortcuts import render
+from django.http import HttpResponse
+# Create your views here.
+
+def displayData(request):
+    s='<h1>This is my Second Django Project</h1>'
+    return HttpResponse(s)
+
+def printData(request):
+    k='<h1>This is my from printData</h1>'
+    return HttpResponse(k)
+
+def helloData(request):
+    i='<h1 style="background-color:yellow">This is my from HelloData</h1>'
+    return HttpResponse(i)
+    
+    
+urls.py
+-------
+
+from django.contrib import admin
+from django.urls import path
+from firstApp import views
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('wish/',views.displayData),
+    path('print/',views.printData),
+    path('hello/',views.helloData),
+
+]
+
+
+projcet - 3:
+---------------
+create multiple application for single project 
+
+1. creation of projcet 
+2. creation of 3 apps 
+3. add all 3 apps in setting.py 
+
+4. create view function in all app
+
+first app
+------------
+from django.shortcuts import render
+from django.http import HttpResponse
+# Create your views here.
+def firstViews(request):
+    return HttpResponse('<h1>This is From FirstApp</h1>')
+    
+ second app
+ ----------
+ 
+from django.shortcuts import render
+from django.http import HttpResponse
+# Create your views here.
+def secondViews(request):
+    return HttpResponse('<h1>This is From secondApp</h1>')
+ 
+ thirdapp
+ ---------
+ 
+ from django.shortcuts import render
+from django.http import HttpResponse
+# Create your views here.
+def thirdViews(request):
+    return HttpResponse('<h1>This is From ThirdApp</h1>')
+    
+    
+    urls.py
+ -------------
+from django.contrib import admin
+from django.urls import path
+from firstApp import views as v1   # alish name other wise it will consider the last one 
+from secondtApp import views as v2
+from thirdApp import views as v3
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('first/', v1.firstViews),
+    path('second/', v2.secondViews),
+    path('third/', v3.thirdViews),
+]
+
+
+run server and see the out put 
+
+
+projcet - 4:
+------------
+Display Server time in the browser screen output 
+
+
+dateTimeApp/views.py
+-----------------------
+from django.http import HttpResponse
+import datetime
+# Create your views here.
+def disaplyDateTime(request):
+    data=datetime.datetime.now()
+    s='<h1>Now the Date and Time is '+str(data)+'</h1>'
+    return HttpResponse(s)
+    
+
+
+projcet - 5:
+--------------
+display wish message based on server time 
+
+time < 12  = Hi Good Morning 
+
+time < 17  = Hi Good Afternoon
+
+time < 20  = Hi Good Evening
+
+time > 20  = Hi Good Night   
+
+
+
+
+views.py
+----------
+from django.shortcuts import render
+from django.http import HttpResponse
+import datetime
+# Create your views here.
+def displayWish(request):
+    data=datetime.datetime.now().hour
+    s='<h1>Hi : '
+
+    if data<12:
+        s=s+'Good Morning'
+    elif data<17:
+        s=s+'God Afternoon'
+    elif data<21:
+        s=s+'Good Evening'
+    else:
+        s=s+'Good Night'
+ 
+    s=s+'</h1>'
+
+    return HttpResponse(s)
+    
+    
+Date: 29-11-2021
+
+By default urls.py is in projcet level file 
+
+
+djnago be deafult provideed urls.py in projcet level not in app level , how to defince uls.py i app level 
+solu: by creating new file urls,py in app level 
+
+
+steps :
+-------
+1. create project
+2. create app 
+3. add app in setting.py 
+4. create views in app/views.py
+5. create urls.py in app level 
+6. define urls pattern in app level ( just coply all from urls.py from projcet level)
+7. define urls pattern in urls.py in project level  ( use include )
+8. run server 
+9. send request like this ---> http://127.0.0.1:8000/urlPatternApp/first/
+
+
+
+Advantages :
+------------
+1. reusabulity 
+2. projcet level urls.py just like clearn and provides more readable 
+
+
+==============================================
+               Templates in Django
+==============================================
+Templates  ---> Presenatation 
+
+steps for writting Template Application in Djnago :
+---------------------------------------------------
+
+1. create project
+2. create app 
+3. add app in setting.py 
+4. by default djnago wont provides any kind of templates folder so we have to create template folder manulaly ---> here we will create templates folder in projcet level 
+5. In that template folder we will also create sub folder (for each app separate html file we   will going to craete)
+6. We will add that template folder in setting.py
+
+
+import os
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
+BASE_DIR = Path(__file__).resolve().parent.parent
+TEMPLATE_DIR=os.path.join(BASE_DIR,'templates')  #this one u have to add 
+
+
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [TEMPLATE_DIR],   # this one u have to add 
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
+]
+
+
+
+
+
+
+
+
+os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+
+
+template tags / template tags:
+=============================
+requirmnet of template tag ?
+here we will inject dynamic content to the template file by using templates tags .
+
+
+{{}}
+
+basically template tag we have to put inside template file ( inside your html file ) and we have to inject dynamic content from views.py 
+
+
+views.py
+---------
+from django.shortcuts import render
+import datetime
+# Create your views here.
+def display(request):
+    result=datetime.datetime.now()  
+    dict={'date_Key':result} # this line is important
+    return render(request,'templateTagsApp/first.html',context=dict)  #this line is important 
+                                                        # context is optional if you want to inject then use it 
+    
+templateTagsApp/first.html
+-----------------------------
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Template based second app  </title>
+</head>
+<body>
+    <h1>Templates based application nUmber 2 </h1>
+    <hr>
+    <p>Currenet time and date is : {{date_Key}}</p>   // this line is very important
+</body>
+</html>
